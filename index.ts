@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 
 export const app = express();
 
-app.use(bodyParser({}));
+app.use(bodyParser.json());
 
 interface Balances {
   [key: string]: number;
@@ -122,6 +122,7 @@ app.get("/balance/:userId", (req, res) => {
 })
   
 app.get("/quote", (req, res) => {
+    //Assignment
     const { side, quantity } = req.body;
     if (!side || !quantity) {
       return res.status(400).json({ error: "Missing side or quantity" });
